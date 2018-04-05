@@ -43,7 +43,7 @@ class SGDR(Optimizer):
 		
 		ipe = self.iter_per_epoch
 		total_iter = K.cast(self.iterations, K.dtype(self.lr_min))
-		lr_curr = total_iter%ipe
+		lr_curr = total_iter%(ipe+1)
 		lr = self.lr_min + (self.lr_max - self.lr_min) * (1. + K.cos(3.1415 * lr_curr/self.iter_per_epoch)) / 2.
 		
 		
